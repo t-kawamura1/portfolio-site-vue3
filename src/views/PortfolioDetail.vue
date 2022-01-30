@@ -142,28 +142,6 @@ export default {
   .button-fade-leave-to {
     opacity: 0;
   }
-
-  .portfolio-detail-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #636363;
-    padding: 0 30px;
-    position: fixed;
-    z-index: 10;
-    background-color: rgba(255, 255, 255, 0.7);
-    width: 100%;
-    height: 50px;
-    .nav {
-      width: 320px;
-      .nav-list {
-        display: flex;
-        justify-content: space-between;
-        padding: 0;
-      }
-    }
-  }
-
   .to-top-button {
     position: fixed;
     z-index: 9;
@@ -296,19 +274,6 @@ export default {
     *:hover {
       opacity: 1;
     }
-
-    .portfolio-detail-header {
-      padding: 0 10px;
-      height: 40px;
-      .nav {
-        width: 200px;
-        height: 40px;
-        .nav-list {
-          padding: 0;
-        }
-      }
-    }
-
     .portfolio1{
       padding: 90px 20px 60px;
       .pf1-title {
