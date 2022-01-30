@@ -1,20 +1,6 @@
 <template>
   <div class="portfolio-detail" ref="portfolio-detail">
-    <header class="portfolio-detail-header">
-      <site-logo/>
-      <nav class="nav">
-        <ul class="nav-list">
-          <nav-list-item
-            nav-list-item-name="Lemon Sour DB"
-            @scrollTo="scrollToAnchorPoint('portfolio1')"
-          />
-          <nav-list-item
-            nav-list-item-name="T.KAWAMURA"
-            @scrollTo="scrollToAnchorPoint('portfolio2')"
-          />
-        </ul>
-      </nav>
-    </header>
+    <site-header @scroll="scrollToAnchorPoint($event)" />
     <transition name="button-fade">
       <to-top-button
         v-if="show"
@@ -305,22 +291,30 @@
 
 <script>
 import { ref } from "vue";
-import SiteLogo from '@/components/shared/SiteLogo'
-import NavListItem from '@/components/shared/NavListItem'
+import SiteHeader from '@/components/shared/SiteHeader'
 import ToTopButton from '@/components/shared/ToTopButton'
 
 export default {
   components: {
-    SiteLogo,
-    NavListItem,
+    SiteHeader,
     ToTopButton,
   },
   setup() {
     let show = ref(false);
+    const portfolio1 = ref(null);
+    const portfolio2 = ref(null);
 
     const scrollToAnchorPoint = (refName) => {
-      const el = refName;
-      el.scrollIntoView({ behavior: 'smooth'});
+      let el
+      switch (refName) {
+        case 'Lemon Sour DB':
+          el = portfolio1
+          break
+        case 'T.KAWAMURA':
+          el = portfolio2
+          break
+      }
+      el.value.scrollIntoView({ behavior: 'smooth'});
     };
 
     document.addEventListener.call(window, 'scroll', () => {
@@ -329,6 +323,8 @@ export default {
 
     return {
       show,
+      portfolio1,
+      portfolio2,
       scrollToAnchorPoint,
     }
   },

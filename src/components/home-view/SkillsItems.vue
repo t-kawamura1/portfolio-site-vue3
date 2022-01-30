@@ -12,15 +12,10 @@
 import { reactive } from "vue"
 
 export default {
-  props: {
-    skillTitle: String,
-    skillImgSrc: String,
-    skillText: String
-  },
   setup() {
     const skillTitles = reactive([
       'SERVER-SIDE',
-      'RONT-END',
+      'FRONT-END',
       'INFRASTRUCTURE'
     ])
     const skillImgSrcs = reactive([
