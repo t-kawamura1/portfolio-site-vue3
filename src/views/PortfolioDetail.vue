@@ -27,110 +27,7 @@
             <img :src="slide" alt="ポートフォリオのイメージ" class="pf1-sp-image">
           </SplideSlide>
         </Splide>
-        <table class="pf1-table">
-          <tr>
-            <th>種類</th>
-            <th>名前</th>
-            <th>バージョン・URL</th>
-          </tr>
-          <tr>
-            <td>フロント</td>
-            <td>
-              Vue.js<br>
-              (Vue CLI)
-            </td>
-            <td>
-              2.6.14<br>
-              (4.5.13)
-            </td>
-          </tr>
-          <tr>
-            <td>バック</td>
-            <td>
-              Ruby on Rails<br>
-              (Ruby)
-            </td>
-            <td>
-              6.0.3.7<br>
-              (2.7.2)
-            </td>
-          </tr>
-          <tr>
-            <td>
-              テストフレームワーク
-            </td>
-            <td>
-              Jest<br>
-              Puppeteer<br>
-              RSpec
-            </td>
-            <td>
-              26.6.3<br>
-              8.0.0<br>
-              4.0.2
-            </td>
-          </tr>
-          <tr>
-            <td>環境構築</td>
-            <td>
-              Docker<br>
-              (Node.js)<br>
-              Docker Compose
-            </td>
-            <td>
-              20.10.8<br>
-              (14-slim)<br>
-              3.8
-            </td>
-          </tr>
-          <tr>
-            <td>ソースコード管理</td>
-            <td>Github</td>
-            <td>
-              <a href="https://github.com/t-kawamura1/lemon-sour-db-front">
-                https://github.com/t-kawamura1/lemon-sour-db-front
-                <fas
-                  class="pf1-table-link-icon"
-                  icon="external-link-alt"
-                ></fas>
-              </a>
-              <br>
-              <a href="https://github.com/t-kawamura1/lemon-sour-db-api">
-                https://github.com/t-kawamura1/lemon-sour-db-api
-                <fas
-                  class="pf1-table-link-icon"
-                  icon="external-link-alt"
-                ></fas>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>CIツール</td>
-            <td>CircleCI</td>
-            <td>2.1</td>
-          </tr>
-          <tr>
-            <td>ホスティング</td>
-            <td>AWS ECS/FARGATE</td>
-            <td>
-              <a href="https://lemonsourdb.net">
-                フロント https://lemonsourdb.net
-                <fas
-                  class="pf1-table-link-icon"
-                  icon="external-link-alt"
-                ></fas>
-              </a>
-              <br>
-              <a href="https://lsdb-back.work">
-                バック https://lsdb-back.work
-                <fas
-                  class="pf1-table-link-icon"
-                  icon="external-link-alt"
-                ></fas>
-              </a>
-            </td>
-          </tr>
-        </table>
+        <lsdb-table />
       </div>
     </section>
     <section class="portfolio2" ref="portfolio2">
@@ -154,63 +51,7 @@
           <p>この開発を通じてコンポーネント・CSS設計の重要性を学びました。</p>
           <p>開発過程についても、git-flowを意識したワークフローを取り入れています。</p>
           <p class="p-last">（2022年1月）Vue3にバージョンアップしました。</p>
-          <table class="pf2-table">
-            <tr>
-              <th>種類</th>
-              <th>名前</th>
-              <th>バージョン・URL</th>
-            </tr>
-            <tr>
-              <td>フロント</td>
-              <td>
-                Vue.js<br>
-                (Vue CLI)
-              </td>
-              <td>
-                3.0.0<br>
-                (4.5.0)
-              </td>
-            </tr>
-            <tr>
-              <td>環境構築</td>
-              <td>
-                Docker<br>
-                (Node.js)<br>
-                Docker Compose
-              </td>
-              <td>
-                20.10.5<br>
-                (14.18.3-alpine)<br>
-                3.8
-              </td>
-            </tr>
-            <tr>
-              <td>ソースコード管理</td>
-              <td>Github</td>
-              <td>
-                <a href="https://github.com/t-kawamura1/portfolio-site-vue3">
-                  https://github.com/t-kawamura1/portfolio-site-vue3
-                  <fas
-                    class="pf2-table-link-icon"
-                    icon="external-link-alt"
-                  ></fas>
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>ホスティング</td>
-              <td>AWS S3 / CloudFront</td>
-              <td>
-                <a href="https://www.t-kawamura.com">
-                  https://www.t-kawamura.com
-                  <fas
-                    class="pf2-table-link-icon"
-                    icon="external-link-alt"
-                  ></fas>
-                </a>
-              </td>
-            </tr>
-          </table>
+          <tk-table />
         </div>
       </div>
     </section>
@@ -221,12 +62,16 @@
 import { reactive, ref } from "vue";
 import SiteHeader from '@/components/shared/SiteHeader'
 import ToTopButton from '@/components/shared/ToTopButton'
+import LsdbTable from '@/components/pf-detail-view/LsdbTable'
+import TkTable from '@/components/pf-detail-view/TkTable'
 import '@splidejs/splide/dist/css/splide.min.css'
 
 export default {
   components: {
     SiteHeader,
     ToTopButton,
+    LsdbTable,
+    TkTable,
   },
   setup() {
     let show = ref(false)
@@ -361,22 +206,6 @@ export default {
           }
         }
       }
-      .pf1-table {
-        border-collapse: collapse;
-        background-color: #f1f1f1;
-        th, td {
-          border: solid 1px #636363;
-          padding: 0 5px;
-          > a {
-            &:hover {
-              opacity: 0.7;
-            }
-            .pf1-table-link-icon {
-              margin-left: 5px;
-            }
-          }
-        }
-      }
     }
   }
 
@@ -457,23 +286,6 @@ export default {
         .p-last {
           margin-bottom: 30px;
         }
-        .pf2-table {
-          border-collapse: collapse;
-          background-color: #666;
-          th, td {
-            border: solid 1px #fff;
-            padding: 0 5px;
-            > a {
-              color: #fff;
-              &:hover {
-                opacity: 0.7;
-              }
-              .pf2-table-link-icon {
-                margin-left: 5px;
-              }
-            }
-          }
-        }
       }
     }
   }
@@ -520,9 +332,6 @@ export default {
               border-radius: 10px;
             }
           }
-        }
-        .pf1-table {
-          font-size: 1rem;
         }
       }
     }
@@ -580,14 +389,6 @@ export default {
           margin-left: 0;
           padding: 0 10px;
           line-height: 1.6;
-          .pf2-table {
-            font-size: 1rem;
-            th, td {
-              > a:hover {
-                opacity: 1;
-              }
-            }
-          }
         }
       }
     }
