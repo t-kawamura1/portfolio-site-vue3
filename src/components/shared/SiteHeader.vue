@@ -26,7 +26,7 @@
 
 <script>
 import SiteLogo from '@/components/shared/SiteLogo'
-import { ref, reactive, onMounted } from "vue";
+import { ref, reactive } from "vue";
 import { useRoute } from 'vue-router'
 
 export default {
@@ -50,20 +50,18 @@ export default {
       context.emit('scroll', name)
     }
 
-    onMounted(() => {
-      const route = useRoute()
-      console.log(route.path)
-      switch (route.path) {
-        case '/':
-          isHome.value = true
-          isPfDetail.value = false
-          break;
-        case '/portfolio-detail':
-          isHome.value = false
-          isPfDetail.value = true
-          break
-      }
-    })
+    /** ヘッダーのルートごとの表示制御 */
+    const route = useRoute()
+    switch (route.path) {
+      case '/':
+        isHome.value = true
+        isPfDetail.value = false
+        break;
+      case '/portfolio-detail':
+        isHome.value = false
+        isPfDetail.value = true
+        break
+    }
 
     return {
       isHome,
