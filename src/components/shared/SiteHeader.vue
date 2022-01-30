@@ -63,7 +63,6 @@ export default {
           isPfDetail.value = true
           break
       }
-      console.log(isPfDetail.value)
     })
 
     return {
