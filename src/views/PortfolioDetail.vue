@@ -17,78 +17,16 @@
           <p>フロントエンドをVue.jsで、バックエンドをRailsで構築しました。</p>
           <p class="p-last">環境をDockerで構築し、CircleCIで継続的インテグレーションを実施、最終はAWS FARGATEでデプロイしています。</p>
         </div>
-        <!-- <Splide :options="{ rewind: true }">
-          <SplideSlide>
-            <img src="../assets/lsdb-pc-top.png" alt="ポートフォリオのイメージ" class="pf1-pc-image">
+        <Splide :options="options" v-if="isPcWidth" class="pc-splide">
+          <SplideSlide v-for="(slide, i) in pcSlides" :key="i" class="pc-slides">
+            <img :src="slide" alt="ポートフォリオのイメージ" class="pf1-pc-image">
           </SplideSlide>
-          <SplideSlide>
-            <img src="../assets/lsdb-pc-sours-index.png" alt="ポートフォリオのイメージ" class="pf1-pc-image">
+        </Splide>
+        <Splide :options="options" v-else class="sp-splide">
+          <SplideSlide v-for="(slide, i) in spSlides" :key="i" class="sp-slides">
+            <img :src="slide" alt="ポートフォリオのイメージ" class="pf1-sp-image">
           </SplideSlide>
-          <SplideSlide>
-            <img src="../assets/lsdb-pc-sour.png" alt="ポートフォリオのイメージ" class="pf1-pc-image">
-          </SplideSlide>
-          <SplideSlide>
-            <img src="../assets/lsdb-pc-calc.png" alt="ポートフォリオのイメージ" class="pf1-pc-image">
-          </SplideSlide>
-          <SplideSlide>
-            <img src="../assets/lsdb-pc-calendar.png" alt="ポートフォリオのイメージ" class="pf1-pc-image">
-          </SplideSlide>
-          <SplideSlide>
-            <img src="../assets/lsdb-pc-user.png" alt="ポートフォリオのイメージ" class="pf1-pc-image">
-          </SplideSlide>
-        </Splide> -->
-        <!-- <hooper
-          v-if="hooperSize"
-          class="pf1-pc-images-slide"
-          :settings="pcHooperSettings"
-        >
-          <slide>
-            <img src="../assets/lsdb-pc-top.png" alt="ポートフォリオのイメージ" class="pf1-pc-image">
-          </slide>
-          <slide>
-            <img src="../assets/lsdb-pc-sours-index.png" alt="ポートフォリオのイメージ" class="pf1-pc-image">
-          </slide>
-          <slide>
-            <img src="../assets/lsdb-pc-sour.png" alt="ポートフォリオのイメージ" class="pf1-pc-image">
-          </slide>
-          <slide>
-            <img src="../assets/lsdb-pc-calc.png" alt="ポートフォリオのイメージ" class="pf1-pc-image">
-          </slide>
-          <slide>
-            <img src="../assets/lsdb-pc-calendar.png" alt="ポートフォリオのイメージ" class="pf1-pc-image">
-          </slide>
-          <slide>
-            <img src="../assets/lsdb-pc-user.png" alt="ポートフォリオのイメージ" class="pf1-pc-image">
-          </slide>
-          <hooper-navigation slot="hooper-addons"></hooper-navigation>
-          <hooper-pagination slot="hooper-addons"></hooper-pagination>
-        </hooper>
-        <hooper
-          v-else
-          class="pf1-sp-images-slide"
-          :settings="spHoperSettings"
-        >
-          <slide>
-            <img src="../assets/lsdb-sp-top.png" alt="ポートフォリオのイメージ" class="pf1-sp-image">
-          </slide>
-          <slide>
-            <img src="../assets/lsdb-sp-sours-index.png" alt="ポートフォリオのイメージ" class="pf1-sp-image">
-          </slide>
-          <slide>
-            <img src="../assets/lsdb-sp-sour.png" alt="ポートフォリオのイメージ" class="pf1-sp-image">
-          </slide>
-          <slide>
-            <img src="../assets/lsdb-sp-calc.png" alt="ポートフォリオのイメージ" class="pf1-sp-image">
-          </slide>
-          <slide>
-            <img src="../assets/lsdb-sp-calendar.png" alt="ポートフォリオのイメージ" class="pf1-sp-image">
-          </slide>
-          <slide>
-            <img src="../assets/lsdb-sp-user.png" alt="ポートフォリオのイメージ" class="pf1-sp-image">
-          </slide>
-          <hooper-navigation slot="hooper-addons"></hooper-navigation>
-          <hooper-pagination slot="hooper-addons"></hooper-pagination>
-        </hooper> -->
+        </Splide>
         <table class="pf1-table">
           <tr>
             <th>種類</th>
@@ -213,8 +151,9 @@
           <p>扱いに慣れるために、Vue.jsで初めて作成した静的サイト。</p>
           <p>シンプルで見やすいデザインを意識しました。</p>
           <p>規模の小さいサイトですが、学習目的でDockerを導入しています。</p>
-          <p>この開発を通じてコンポネート・CSS設計の重要性を学びました。</p>
-          <p class="p-last">開発過程についても、git-flowを意識したワークフローを取り入れています。</p>
+          <p>この開発を通じてコンポーネント・CSS設計の重要性を学びました。</p>
+          <p>開発過程についても、git-flowを意識したワークフローを取り入れています。</p>
+          <p class="p-last">（2022年1月）Vue3にバージョンアップしました。</p>
           <table class="pf2-table">
             <tr>
               <th>種類</th>
@@ -228,19 +167,8 @@
                 (Vue CLI)
               </td>
               <td>
-                2.6.12<br>
-                (4.5.12)
-              </td>
-            </tr>
-            <tr>
-              <td>テストツール</td>
-              <td>
-                Vue Test Utils<br>
-                Jest
-              </td>
-              <td>
-                1.1.3<br>
-                26.6.3
+                3.0.0<br>
+                (4.5.0)
               </td>
             </tr>
             <tr>
@@ -252,7 +180,7 @@
               </td>
               <td>
                 20.10.5<br>
-                (14.16.0-alpine)<br>
+                (14.18.3-alpine)<br>
                 3.8
               </td>
             </tr>
@@ -260,8 +188,8 @@
               <td>ソースコード管理</td>
               <td>Github</td>
               <td>
-                <a href="https://github.com/t-kawamura1/portfolio-site">
-                  https://github.com/t-kawamura1/portfolio-site
+                <a href="https://github.com/t-kawamura1/portfolio-site-vue3">
+                  https://github.com/t-kawamura1/portfolio-site-vue3
                   <fas
                     class="pf2-table-link-icon"
                     icon="external-link-alt"
@@ -290,9 +218,10 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 import SiteHeader from '@/components/shared/SiteHeader'
 import ToTopButton from '@/components/shared/ToTopButton'
+import '@splidejs/splide/dist/css/splide.min.css'
 
 export default {
   components: {
@@ -300,9 +229,30 @@ export default {
     ToTopButton,
   },
   setup() {
-    let show = ref(false);
-    const portfolio1 = ref(null);
-    const portfolio2 = ref(null);
+    let show = ref(false)
+    let isPcWidth = ref(window.outerWidth > 768)
+    const portfolio1 = ref(null)
+    const portfolio2 = ref(null)
+    const options = reactive({
+      rewind: true,
+      autoplay: true
+    })
+    const pcSlides = reactive([
+      require('../assets/lsdb-pc-top.png'),
+      require('../assets/lsdb-pc-sours-index.png'),
+      require('../assets/lsdb-pc-sour.png'),
+      require('../assets/lsdb-pc-calc.png'),
+      require('../assets/lsdb-pc-calendar.png'),
+      require('../assets/lsdb-pc-user.png'),
+    ])
+    const spSlides = reactive([
+      require('../assets/lsdb-sp-top.png'),
+      require('../assets/lsdb-sp-sours-index.png'),
+      require('../assets/lsdb-sp-sour.png'),
+      require('../assets/lsdb-sp-calc.png'),
+      require('../assets/lsdb-sp-calendar.png'),
+      require('../assets/lsdb-sp-user.png'),
+    ])
 
     const scrollToAnchorPoint = (refName) => {
       let el
@@ -315,8 +265,11 @@ export default {
           break
       }
       el.value.scrollIntoView({ behavior: 'smooth'});
-    };
+    }
 
+    document.addEventListener.call(window, 'resize', () => {
+      isPcWidth.value = (window.outerWidth > 768)
+    })
     document.addEventListener.call(window, 'scroll', () => {
       show.value = (window.scrollY > 500);
     })
@@ -325,7 +278,11 @@ export default {
       show,
       portfolio1,
       portfolio2,
+      options,
+      pcSlides,
+      spSlides,
       scrollToAnchorPoint,
+      isPcWidth,
     }
   },
 }
@@ -392,11 +349,11 @@ export default {
           margin-bottom: 30px;
         }
       }
-      .pf1-pc-images-slide {
+      .pc-splide {
         width: 500px;
         height: 273px;
         margin-bottom: 40px;
-        .hooper-slide {
+        .pc-slides {
           .pf1-pc-image {
             width: 500px;
             height: 273px;
@@ -552,14 +509,16 @@ export default {
           font-size: 1.4rem;
           line-height: 1.8;
         }
-        .pf1-sp-images-slide {
-          widows: 210px;
+        .sp-splide {
+          width: 210px;
           height: 455px;
           margin-bottom: 20px;
-          .pf1-sp-image {
-            width: 210px;
-            height: 455px;
-            border-radius: 10px;
+          .sp-slides {
+            .pf1-sp-image {
+              width: 210px;
+              height: 455px;
+              border-radius: 10px;
+            }
           }
         }
         .pf1-table {
