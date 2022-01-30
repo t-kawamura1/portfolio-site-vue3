@@ -67,7 +67,7 @@ export default {
       let element = document.getElementsByClassName('sec-fadein');
       if (!element) return;
       let showTiming = 200;
-      let scrollY = window.pageYOffset;
+      let scrollY = window.scrollY;
       let windowH = window.innerHeight;
       for (let i = 0; i < element.length; i++) {
         let elementClientRect = element[i].getBoundingClientRect();

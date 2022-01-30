@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header" :class="{ opacity: isOpacity }">
     <site-logo/>
     <nav class="home-nav" v-if="isHome">
       <ul class="nav-list">
@@ -34,6 +34,7 @@ export default {
     SiteLogo
   },
   setup(_, context) {
+    let isOpacity = ref(false)
     let isHome = ref(false)
     let isPfDetail = ref(false)
     const homeHeaderNameList = reactive([
@@ -49,6 +50,9 @@ export default {
     const onScroll = (name) => {
       context.emit('scroll', name)
     }
+    const addOpacity = () => {
+      isOpacity.value = (window.scrollY > 160)
+    }
 
     /** ヘッダーのルートごとの表示制御 */
     const route = useRoute()
@@ -63,12 +67,16 @@ export default {
         break
     }
 
+    document.addEventListener.call(window, 'scroll', addOpacity)
+
     return {
+      isOpacity,
       isHome,
       isPfDetail,
       homeHeaderNameList,
       pfDetailHeaderNameList,
-      onScroll
+      onScroll,
+      addOpacity,
     }
   }
 }
@@ -83,9 +91,12 @@ export default {
   padding: 0 30px;
   position: fixed;
   z-index: 10;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0);
   width: 100%;
   height: 50px;
+  &.opacity {
+    background-color: rgba(255, 255, 255, 1);
+  }
   .home-nav {
     width: 500px;
     .nav-list {
