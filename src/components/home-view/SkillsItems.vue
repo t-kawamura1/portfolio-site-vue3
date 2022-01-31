@@ -1,6 +1,6 @@
 <template>
   <div class="skills-container">
-    <div class="skills-item" v-for="(title, i) in skillTitles" :key="i">
+    <div class="skill-item" v-for="(title, i) in skillTitles" :key="i">
       <div class="skill-title">{{ title }}</div>
       <img :src="skillImgSrcs[i]" alt="スキルイメージ" class="skill-image">
       <p class="skill-text">{{ skillTexts[i] }}</p>
@@ -42,7 +42,7 @@ export default {
 .skills-container {
   display: flex;
   justify-content: space-between;
-  .skills-item {
+  .skill-item {
     padding-top: 20px;
     width: 30%;
     .skill-title {

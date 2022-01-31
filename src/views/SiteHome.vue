@@ -16,7 +16,8 @@
     </section>
     <section class="skills sec-fadein" ref="skills">
       <section-heading heading="SKILLS"/>
-      <skills-items />
+      <!-- <skills-items /> -->
+      <skills-set />
     </section>
     <section class="stances sec-fadein" ref="stances">
       <section-heading heading="STANCES"/>
@@ -38,7 +39,8 @@ import ToTopButton from '@/components/shared/ToTopButton'
 import HeroItem from '@/components/home-view/HeroItem'
 import SectionHeading from '@/components/shared/SectionHeading'
 import PortfolioItems from '@/components/home-view/PortfolioItems'
-import SkillsItems from '@/components/home-view/SkillsItems'
+// import SkillsItems from '@/components/home-view/SkillsItems'
+import SkillsSet from '@/components/home-view/SkillsSet'
 import StancesItems from '@/components/home-view/StancesItems'
 import StancesFigureItem from '@/components/home-view/StancesFigureItem'
 import ProfileItem from '@/components/home-view/ProfileItem'
@@ -50,7 +52,8 @@ export default {
     HeroItem,
     SectionHeading,
     PortfolioItems,
-    SkillsItems,
+    // SkillsItems,
+    SkillsSet,
     StancesItems,
     StancesFigureItem,
     ProfileItem
@@ -124,7 +127,7 @@ export default {
   background-size: cover;
   background-blend-mode: lighten;
   .button-fade-enter-active, .button-fade-leave-active {
-    transition: opacity 0.5s;
+    transition: opacity 0.2s;
   }
   .button-fade-leave-to {
     opacity: 0;
@@ -158,7 +161,7 @@ export default {
   }
 
   .skills {
-    padding: 100px 60px;
+    padding: 100px 150px;
     background-color: #f5f5f5;
   }
 
