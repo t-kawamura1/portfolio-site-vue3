@@ -161,7 +161,7 @@ export default {
   }
 
   .skills {
-    padding: 100px 150px;
+    padding: 100px 30px;
     background-color: #f5f5f5;
   }
 

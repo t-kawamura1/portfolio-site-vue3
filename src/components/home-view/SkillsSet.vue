@@ -1,36 +1,36 @@
 <template>
   <div class="skills-container">
-    <transition
-      name="skill-item"
-      v-for="(img, i) in skillImgSrcs"
-      :key="i"
-    >
-      <div
-        class="skill-item"
-        @click="onSkillItem(i)"
-      >
-        <div class="img-box">
-          <img
-            :src="img"
-            alt="スキルイメージ"
-            class="skill-image"
+    <split-carousel v-bind="options">
+      <split-carousel-item v-for="(img, i) in skillImgSrcs" :key="i">
+        <transition name="skill-item">
+          <div
+            class="skill-item"
+            @click="onSkillItem(i)"
           >
-          <div class="skill-name">{{ skillNames[i] }}</div>
-        </div>
+            <div class="img-box">
+              <img
+                :src="img"
+                alt="スキルイメージ"
+                class="skill-image"
+              >
+              <div class="skill-name">{{ skillNames[i] }}</div>
+            </div>
 
-        <div class="skill-text">
-          <div class="use">
-            <span class="use-tag">使用期間</span>
-            <div>{{ periodsOfUse[i] }}</div>
+            <div class="skill-text">
+              <div class="use">
+                <span class="use-tag">使用期間</span>
+                <div>{{ periodsOfUse[i] }}</div>
+              </div>
+              <div class="business">
+                <span class="business-tag">業務歴</span>
+                <div>{{ businessHistories[i] }}</div>
+              </div>
+              <p class="description">{{ descriptions[i] }}</p>
+            </div>
           </div>
-          <div class="business">
-            <span class="business-tag">業務歴</span>
-            <div>{{ businessHistories[i] }}</div>
-          </div>
-          <p class="description">{{ descriptions[i] }}</p>
-        </div>
-      </div>
-    </transition>
+        </transition>
+      </split-carousel-item>
+    </split-carousel>
   </div>
 </template>
 
@@ -39,6 +39,12 @@ import { reactive, ref } from "vue"
 
 export default {
   setup() {
+    const options = reactive({
+      speed: 2000,
+      interval: 2000,
+      'display-amount': 5,
+      height: 360,
+    })
     let isClicked = ref(false)
     const skillImgSrcs = reactive([
       require('@/assets/rails.svg'),
@@ -101,6 +107,7 @@ export default {
     }
 
     return {
+      options,
       isClicked,
       skillImgSrcs,
       skillNames,
@@ -115,9 +122,6 @@ export default {
 
 <style lang="scss" scoped>
 .skills-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   .skill-item-enter-active, .skill-item-leave-active {
     transition: background-color 0.5s;
   }
