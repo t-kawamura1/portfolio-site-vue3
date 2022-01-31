@@ -48,7 +48,7 @@ export default {
     let isClicked = ref(false)
     const skillImgSrcs = reactive([
       require('@/assets/rails.svg'),
-      require('@/assets/java.svg'),
+      require('@/assets/java-14.svg'),
       require('@/assets/vue.svg'),
       require('@/assets/angular.svg'),
       require('@/assets/docker.svg'),
