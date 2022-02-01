@@ -16,7 +16,6 @@
     </section>
     <section class="skills sec-fadein" ref="skills">
       <section-heading heading="SKILLS"/>
-      <!-- <skills-items /> -->
       <skills-set />
     </section>
     <section class="stances sec-fadein" ref="stances">
@@ -39,7 +38,6 @@ import ToTopButton from '@/components/shared/ToTopButton'
 import HeroItem from '@/components/home-view/HeroItem'
 import SectionHeading from '@/components/shared/SectionHeading'
 import PortfolioItems from '@/components/home-view/PortfolioItems'
-// import SkillsItems from '@/components/home-view/SkillsItems'
 import SkillsSet from '@/components/home-view/SkillsSet'
 import StancesItems from '@/components/home-view/StancesItems'
 import StancesFigureItem from '@/components/home-view/StancesFigureItem'
@@ -52,7 +50,6 @@ export default {
     HeroItem,
     SectionHeading,
     PortfolioItems,
-    // SkillsItems,
     SkillsSet,
     StancesItems,
     StancesFigureItem,
