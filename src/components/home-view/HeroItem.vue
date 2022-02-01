@@ -1,7 +1,7 @@
 <template>
   <h1 class="title">T.KAWAMURA</h1>
   <p class="sub-title">Make the world efficient and fun.</p>
-  <div class="hero-buttons-box">
+  <!-- <div class="hero-buttons-box">
     <button-dark
       button-text="Portfolio"
       @scroll="onScroll('PORTFOLIO')"
@@ -10,25 +10,25 @@
       button-text="About me"
       @scroll="onScroll('PROFILE')"
     />
-  </div>
+  </div> -->
 </template>
 
 <script>
-import ButtonDark from '@/components/home-view/ButtonDark'
+// import ButtonDark from '@/components/home-view/ButtonDark'
 
 export default {
-  components: {
-    ButtonDark,
-  },
-  setup(_, context) {
-    const onScroll = (name) => {
-      context.emit('scroll', name)
-    }
+  // components: {
+  //   ButtonDark,
+  // },
+  // setup(_, context) {
+  //   const onScroll = (name) => {
+  //     context.emit('scroll', name)
+  //   }
 
-    return {
-      onScroll
-    }
-  }
+  //   return {
+  //     onScroll
+  //   }
+  // }
 }
 </script>
 
@@ -36,21 +36,21 @@ export default {
 .title {
   margin-bottom: 40px;
   font-weight: 200;
-  font-size: 7rem;
+  font-size: 4.2rem;
   letter-spacing: 4px;
 }
 .sub-title {
-  margin-bottom: 80px;
+  margin-bottom: 60px;
   font-weight: 300;
-  font-size: 2.8rem;
+  font-size: 1.8rem;
   letter-spacing: 1px;
 }
-.hero-buttons-box {
-  display: flex;
-  margin: 0 auto;
-  justify-content: space-between;
-  width: 450px;
-}
+// .hero-buttons-box {
+//   display: flex;
+//   margin: 0 auto;
+//   justify-content: space-between;
+//   width: 330px;
+// }
 
 @media (max-width: 768px) {
   .title {
@@ -62,12 +62,12 @@ export default {
     margin-bottom: 80px;
     font-size: 1.5rem;
   }
-  .hero-buttons-box {
-    flex-direction: column;
-    justify-content: space-around;
-    width: 200px;
-    height: 170px;
-    margin-bottom: 50px;
-  }
+  // .hero-buttons-box {
+  //   flex-direction: column;
+  //   justify-content: space-around;
+  //   width: 200px;
+  //   height: 170px;
+  //   margin-bottom: 50px;
+  // }
 }
 </style>

@@ -98,7 +98,7 @@ export default {
     background-color: rgba(255, 255, 255, 1);
   }
   .home-nav {
-    width: 500px;
+    width: 450px;
     .nav-list {
       display: flex;
       justify-content: space-between;
@@ -108,7 +108,7 @@ export default {
         font-weight: 300;
         color: #636363;
         line-height: 40px;
-        font-size: 2rem;
+        font-size: 1.8rem;
         &:hover {
           opacity: 0.5;
           cursor: pointer;
@@ -117,7 +117,7 @@ export default {
     }
   }
   .pfdetail-nav {
-    width:350px;
+    width:300px;
     .nav-list {
       display: flex;
       justify-content: space-between;
@@ -127,7 +127,7 @@ export default {
         font-weight: 300;
         color: #636363;
         line-height: 40px;
-        font-size: 2rem;
+        font-size: 1.8rem;
         &:hover {
           opacity: 0.5;
           cursor: pointer;

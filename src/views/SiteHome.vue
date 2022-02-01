@@ -139,8 +139,8 @@ export default {
 
   .heading {
     margin-bottom: 60px;
-    font-size: 3rem;
-    font-weight: 400;
+    font-size: 2.7rem;
+    font-weight: 300;
     letter-spacing: 1px;
     &::before, &::after {
       content: '';
@@ -148,7 +148,7 @@ export default {
       width: 30px;
       height: 3px;
       margin: 0 10px;
-      border-bottom: solid 3px;
+      border-bottom: solid 2px;
     }
   }
 
@@ -161,7 +161,7 @@ export default {
 
   .hero {
     color: #636363;
-    padding: 190px 60px 220px;
+    padding: 280px 60px 350px;
   }
 
   .portfolio {
@@ -180,7 +180,7 @@ export default {
     background-color: #777;
     color: #fff;
     .stances-title {
-      font-size: 2.4rem;
+      font-size: 2.2rem;
       margin-bottom: 60px;
       letter-spacing: 1px;
     }

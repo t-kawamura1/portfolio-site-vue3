@@ -22,13 +22,13 @@ export default {
 <style lang="scss" scoped>
 .button-dark {
   display: inline-block;
-  width: 200px;
+  width: 150px;
   padding: 15px;
   border-radius: 4px;
   background-color: #777;
   color: #fff;
   letter-spacing: 1px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   &:hover {
     background-color: #555;
     transition: 0.2s;

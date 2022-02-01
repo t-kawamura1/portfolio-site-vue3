@@ -154,7 +154,7 @@ export default {
     background-color: #f5f5f5;
     .pf1-title {
       display: inline-block;
-      font-size: 3rem;
+      font-size: 2.7rem;
       color: #636363;
       letter-spacing: 2px;
       margin-bottom: 60px;
@@ -194,9 +194,9 @@ export default {
       margin-bottom: 90px;
       .pf2-title {
         display: inline-block;
-        font-size: 3rem;
+        font-size: 2.7rem;
         color: #fff;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
         &:last-child {
           margin-left: 20px;
           letter-spacing: 1px;
