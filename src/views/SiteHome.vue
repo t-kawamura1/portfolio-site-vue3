@@ -11,21 +11,21 @@
       <hero-item @scroll="scrollToAnchorPoint($event)"/>
     </section>
     <section class="portfolio sec-fadein" ref="portfolio">
-      <section-heading heading="PORTFOLIO"/>
+      <h2 class="heading sec-fadein">PORTFOLIO</h2>
       <portfolio-items />
     </section>
     <section class="skills sec-fadein" ref="skills">
-      <section-heading heading="SKILLS"/>
+      <h2 class="heading sec-fadein">SKILLS</h2>
       <skills-set />
     </section>
     <section class="stances sec-fadein" ref="stances">
-      <section-heading heading="STANCES"/>
+      <h2 class="heading sec-fadein">STANCE</h2>
       <div class="stances-title">世の中を効率的に、かつ おもしろく</div>
       <stances-items />
       <stances-figure-item />
     </section>
     <section class="profile sec-fadein" ref="profile">
-      <section-heading heading="PROFILE"/>
+      <h2 class="heading sec-fadein">PROFILE</h2>
       <profile-item />
     </section>
   </div>
@@ -36,7 +36,6 @@ import { ref } from "vue";
 import SiteHeader from '@/components/shared/SiteHeader'
 import ToTopButton from '@/components/shared/ToTopButton'
 import HeroItem from '@/components/home-view/HeroItem'
-import SectionHeading from '@/components/shared/SectionHeading'
 import PortfolioItems from '@/components/home-view/PortfolioItems'
 import SkillsSet from '@/components/home-view/SkillsSet'
 import StancesItems from '@/components/home-view/StancesItems'
@@ -48,7 +47,6 @@ export default {
     SiteHeader,
     ToTopButton,
     HeroItem,
-    SectionHeading,
     PortfolioItems,
     SkillsSet,
     StancesItems,
@@ -66,13 +64,13 @@ export default {
     const showSection = () => {
       let element = document.getElementsByClassName('sec-fadein');
       if (!element) return;
-      let showTiming = 200;
+      // let showTiming = 200;
       let scrollY = window.scrollY;
       let windowH = window.innerHeight;
       for (let i = 0; i < element.length; i++) {
         let elementClientRect = element[i].getBoundingClientRect();
         let elementY = scrollY + elementClientRect.top;
-        if (scrollY + windowH - showTiming > elementY) {
+        if (scrollY + windowH > elementY) {
           element[i].classList.add('scrollin');
         }
       }
@@ -139,6 +137,21 @@ export default {
     }
   }
 
+  .heading {
+    margin-bottom: 60px;
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    &::before, &::after {
+      content: '';
+      display: inline-block;
+      width: 30px;
+      height: 3px;
+      margin: 0 10px;
+      border-bottom: solid 3px;
+    }
+  }
+
   .to-top-button {
     position: fixed;
     z-index: 9;
@@ -187,6 +200,18 @@ export default {
     background: none;
     *:hover {
       opacity: 1;
+    }
+
+    .heading {
+      margin-bottom: 40px;
+      font-size: 2.6rem;
+      font-weight: 300;
+      &::before, &::after {
+        width: 30px;
+        height: 2px;
+        margin: 0 10px;
+        border-bottom: solid 2px;
+      }
     }
 
     .hero {
