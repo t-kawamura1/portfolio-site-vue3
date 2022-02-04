@@ -1,6 +1,9 @@
 <template>
   <div class="home" ref="home">
     <site-header @scroll="scrollToAnchorPoint($event)" />
+    <div id="scrolldown" class="scrolldown">
+      <span>Scroll</span>
+    </div>
     <transition name="button-fade">
       <to-top-button
         v-if="show"
@@ -10,21 +13,21 @@
     <section class="hero">
       <hero-item @scroll="scrollToAnchorPoint($event)"/>
     </section>
-    <section class="portfolio sec-fadein" ref="portfolio">
+    <section id="portfolio" class="portfolio sec-fadein" ref="portfolio">
       <h2 class="heading sec-fadein">PORTFOLIO</h2>
       <portfolio-items />
     </section>
-    <section class="skills sec-fadein" ref="skills">
+    <section id="skills" class="skills sec-fadein" ref="skills">
       <h2 class="heading sec-fadein">SKILLS</h2>
       <skills-set />
     </section>
-    <section class="stances sec-fadein" ref="stances">
+    <section id="stances" class="stances sec-fadein" ref="stances">
       <h2 class="heading sec-fadein">STANCE</h2>
       <div class="stances-title">世の中を効率的に、かつ おもしろく</div>
       <stances-items />
       <stances-figure-item />
     </section>
-    <section class="profile sec-fadein" ref="profile">
+    <section id="profile" class="profile sec-fadein" ref="profile">
       <h2 class="heading sec-fadein">PROFILE</h2>
       <profile-item />
     </section>
@@ -74,7 +77,33 @@ export default {
           element[i].classList.add('scrollin');
         }
       }
-    };
+    }
+    const showToTopButton = () => {
+      show.value = (window.scrollY > 500);
+    }
+    const addSlideLeft = () => {
+      let scrollY = window.scrollY
+      let windowH = window.innerHeight
+      let element = document.getElementById('scrolldown')
+      // let portfolio = document.getElementById('portfolio')
+      // let skills = document.getElementById('skills')
+      // let stances = document.getElementById('stances')
+      let profile = document.getElementById('profile')
+      // let portfolioTop = portfolio.getBoundingClientRect().top
+      // let skillsTop = skills.getBoundingClientRect().top
+      // let stancesTop = stances.getBoundingClientRect().top
+      let profileTop = profile.getBoundingClientRect().top
+      if (scrollY > 90) {
+        element.classList.add('slide-left')
+      } else {
+        element.classList.remove('slide-left')
+      }
+      if (windowH > profileTop) {
+        element.classList.add('opacity')
+      } else {
+        element.classList.remove('opacity')
+      }
+    }
     const scrollToAnchorPoint = (refName) => {
       let el;
       switch (refName) {
@@ -98,9 +127,8 @@ export default {
     };
 
     document.addEventListener.call(window, 'scroll', showSection)
-    document.addEventListener.call(window, 'scroll', () => {
-      show.value = (window.scrollY > 500);
-    })
+    document.addEventListener.call(window, 'scroll', showToTopButton)
+    document.addEventListener.call(window, 'scroll', addSlideLeft)
 
     return {
       show,
@@ -110,6 +138,8 @@ export default {
       stances,
       profile,
       showSection,
+      showToTopButton,
+      addSlideLeft,
       scrollToAnchorPoint,
     };
   },
@@ -121,6 +151,59 @@ export default {
   background: rgba(255, 255, 255, 0.7) url('../assets/home-bg.jpg') no-repeat fixed left bottom;
   background-size: cover;
   background-blend-mode: lighten;
+
+  .scrolldown {
+    position: fixed;
+    z-index: 9;
+    left: 50%;
+    bottom: 10px;
+    height: 50px;
+    font-size: 2rem;
+    font-weight: 300;
+    transition: all 0.6s ease-out;
+    color: #333;
+    > span {
+      position: absolute;
+      left: -28px;
+      top: -24px;
+    }
+    &.slide-left {
+      left: 50px;
+    }
+    // &.color-reverse {
+    //   color: #fff;
+    // }
+    &.opacity {
+      opacity: 0;
+    }
+  }
+  .scrolldown::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    width: 1px;
+    height: 50px;
+    background-color: #333;
+    animation: pathmove 1.4s ease-in-out infinite;
+    opacity: 0;
+  }
+  @keyframes pathmove {
+    0% {
+      height: 0;
+      top: 0;
+      opacity: 0;
+    }
+    30% {
+      height: 40px;
+      opacity: 1;
+    }
+    100% {
+      height: 0;
+      top: 50px;
+      opacity: 0;
+    }
+  }
+
   .button-fade-enter-active, .button-fade-leave-active {
     transition: opacity 0.2s;
   }
@@ -171,7 +254,7 @@ export default {
   }
 
   .skills {
-    padding: 100px 30px;
+    padding: 100px 40px;
     background-color: #f5f5f5;
   }
 
