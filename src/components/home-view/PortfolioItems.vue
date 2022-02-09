@@ -1,30 +1,33 @@
 <template>
   <div class="portfolio-container">
-    <div class="portfolio-item" v-for="(src, i) in pfImgSrc" :key="i">
-      <img :src="src" alt="サイトスクリーンショット" class="site-image">
-      <div class="portfolio-title">{{ pfTitle[i] }}</div>
-      <a href="pfURL[i]" class="portfolio-link">
-        <fas
-          class="portfolio-link-icon"
-          icon="external-link-alt"
-        ></fas>
-        {{ pfURL[i] }}
-      </a>
-      <p class="portfolio-text">{{ pfText[i] }}</p>
-      <button-bright button-text="もっと詳しく" @showMoreDetail="routeToPortfolioDetail"/>
+    <div class="portfolio-item1">
+      <img src="@/assets/lsdb-pc-top.png" alt="サイトスクリーンショット" class="site-image1">
+      <div class="text-box1">
+        <div class="portfolio-title">Lemon Sour DB</div>
+        <a href="https://lemonsourdb.net" class="portfolio-link">
+          https://lemonsourdb.net
+        </a>
+      </div>
+    </div>
+
+    <div class="portfolio-item2">
+      <img src="@/assets/pfsite-pc-top.png" alt="サイトスクリーンショット" class="site-image2">
+      <div class="text-box2">
+        <div class="portfolio-title">T.KAWAMURA ポートフォリオサイト</div>
+        <a href="https://www.t-kawamura.com" class="portfolio-link">
+          https://www.t-kawamura.com
+        </a>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { reactive } from "vue"
-import ButtonBright from '@/components/home-view/ButtonBright'
 import { useRouter } from 'vue-router'
 
 export default {
-  components:{
-    ButtonBright
-  },
+  components:{},
   setup() {
     const pfImgSrc = reactive([
       require('@/assets/lsdb-pc-top.png'),
@@ -61,40 +64,78 @@ export default {
 
 <style lang="scss" scoped>
 .portfolio-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-
-  .portfolio-item {
-    width: 45%;
+  text-align: left;
+  .portfolio-item1 {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .site-image {
-    margin-bottom: 50px;
-    width: 100%;
+    margin-bottom: 300px;
+    .site-image1 {
+      width: 630px;
+      box-shadow: 8px 8px 8px #dcdcdc;
     }
-    .portfolio-title {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      letter-spacing: 1px;
-    }
-    .portfolio-link {
-      margin-bottom: 30px;
-      color: #fff;
-      font-weight: 300;
-      &:hover {
-        opacity: 0.8;
+    .text-box1 {
+      width: 450px;
+      height: 130px;
+      border-radius: 4px;
+      box-shadow: 4px 4px 4px #dcdcdc;
+      text-align: center;
+      background-color: #fefefe;
+      position: absolute;
+      top: 250px;
+      left: 480px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .portfolio-title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
       }
-      .portfolio-link-icon {
-        margin-right: 5px;
+      .portfolio-link {
+        font-weight: 300;
+        &:hover {
+          opacity: 0.8;
+        }
       }
     }
-    .portfolio-text {
-      margin-bottom: 30px;
-      line-height: 2;
-      text-align: left;
+  }
+
+  .portfolio-item2 {
+    position: relative;
+    text-align: right;
+    padding-right: 30px;
+    .site-image2 {
+      width: 630px;
+      box-shadow: 8px 8px 8px #dcdcdc;
+      position: relative;
+    }
+    .text-box2 {
+      width: 450px;
+      height: 130px;
+      border-radius: 4px;
+      box-shadow: 4px 4px 4px #dcdcdc;
+      text-align: center;
+      background-color: #fefefe;
+      position: absolute;
+      top: -45px;
+      right: 480px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .portfolio-title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+      }
+      .portfolio-link {
+        font-weight: 300;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
     }
   }
 }
@@ -105,13 +146,6 @@ export default {
     flex-direction: column;
     .portfolio-item {
       width: 100%;
-      &:first-child {
-        padding-bottom: 40px;
-        border-bottom: 1px solid #fff;
-      }
-      &:last-child {
-        padding-top: 50px;
-      }
       .site-image {
         margin-bottom: 30px;
       }
@@ -122,15 +156,7 @@ export default {
         font-size: 1.5rem;
       }
       .portfolio-link:hover {
-          opacity: 1;
-      }
-      .portfolio-text {
-        font-size: 1.4rem;
-      }
-      &:first-child::after {
-        font-size: 2.5rem;
-        top: 25%;
-        letter-spacing: 2px;
+        opacity: 1;
       }
     }
   }

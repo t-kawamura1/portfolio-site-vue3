@@ -58,14 +58,14 @@ body {
   font-family: 'Montserrat', "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
   line-height: 1;
   font-size: 1.6rem;
-  color: #333;
+  color: #636363;
   text-align: center;
 }
 a {
   vertical-align:baseline;
   background-color: transparent;
   text-decoration: none;
-  color: #333;
+  color: #636363;
   }
 nav ul li {
   list-style:none;

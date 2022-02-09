@@ -1,7 +1,7 @@
 <template>
   <div class="home" ref="home">
     <site-header @scroll="scrollToAnchorPoint($event)" />
-    <div id="scrolldown" class="scrolldown">
+    <div class="scrolldown">
       <span>Scroll</span>
     </div>
     <transition name="button-fade">
@@ -13,22 +13,30 @@
     <section class="hero">
       <hero-item @scroll="scrollToAnchorPoint($event)"/>
     </section>
-    <section id="portfolio" class="portfolio sec-fadein" ref="portfolio">
-      <h2 class="heading sec-fadein">PORTFOLIO</h2>
-      <portfolio-items />
+    <section class="my-contents">
+      <div class="portfolio sec-fadein" ref="portfolio">
+        <div class="heading-wrapper">
+          <h2 class="heading sec-fadein">PORTFOLIO</h2>
+        </div>
+        <portfolio-items />
+      </div>
+      <div class="skills" ref="skills">
+        <div class="heading-wrapper">
+          <h2 class="heading sec-fadein">SKILLS</h2>
+        </div>
+        <skills-set />
+      </div>
+      <div class="stances" ref="stances">
+        <div class="heading-wrapper">
+          <h2 class="heading sec-fadein">STANCE</h2>
+        </div>
+        <stances-items />
+      </div>
     </section>
-    <section id="skills" class="skills sec-fadein" ref="skills">
-      <h2 class="heading sec-fadein">SKILLS</h2>
-      <skills-set />
-    </section>
-    <section id="stances" class="stances sec-fadein" ref="stances">
-      <h2 class="heading sec-fadein">STANCE</h2>
-      <div class="stances-title">世の中を効率的に、かつ おもしろく</div>
-      <stances-items />
-      <stances-figure-item />
-    </section>
-    <section id="profile" class="profile sec-fadein" ref="profile">
-      <h2 class="heading sec-fadein">PROFILE</h2>
+    <section class="profile sec-fadein" ref="profile">
+      <div class="heading-wrapper">
+        <h2 class="heading sec-fadein">PROFILE</h2>
+      </div>
       <profile-item />
     </section>
   </div>
@@ -42,7 +50,6 @@ import HeroItem from '@/components/home-view/HeroItem'
 import PortfolioItems from '@/components/home-view/PortfolioItems'
 import SkillsSet from '@/components/home-view/SkillsSet'
 import StancesItems from '@/components/home-view/StancesItems'
-import StancesFigureItem from '@/components/home-view/StancesFigureItem'
 import ProfileItem from '@/components/home-view/ProfileItem'
 
 export default {
@@ -53,7 +60,6 @@ export default {
     PortfolioItems,
     SkillsSet,
     StancesItems,
-    StancesFigureItem,
     ProfileItem
   },
   setup() {
@@ -65,7 +71,7 @@ export default {
     const profile = ref(null);
 
     const showSection = () => {
-      let element = document.getElementsByClassName('sec-fadein');
+      let element = document.querySelectorAll('.sec-fadein');
       if (!element) return;
       // let showTiming = 200;
       let scrollY = window.scrollY;
@@ -84,14 +90,8 @@ export default {
     const addSlideLeft = () => {
       let scrollY = window.scrollY
       let windowH = window.innerHeight
-      let element = document.getElementById('scrolldown')
-      // let portfolio = document.getElementById('portfolio')
-      // let skills = document.getElementById('skills')
-      // let stances = document.getElementById('stances')
-      let profile = document.getElementById('profile')
-      // let portfolioTop = portfolio.getBoundingClientRect().top
-      // let skillsTop = skills.getBoundingClientRect().top
-      // let stancesTop = stances.getBoundingClientRect().top
+      let element = document.querySelector('.scrolldown')
+      let profile = document.querySelector('.profile')
       let profileTop = profile.getBoundingClientRect().top
       if (scrollY > 90) {
         element.classList.add('slide-left')
@@ -151,6 +151,7 @@ export default {
   background: rgba(255, 255, 255, 0.7) url('../assets/home-bg.jpg') no-repeat fixed left bottom;
   background-size: cover;
   background-blend-mode: lighten;
+  // z-index: 1;
 
   .scrolldown {
     position: fixed;
@@ -161,7 +162,7 @@ export default {
     font-size: 2rem;
     font-weight: 300;
     transition: all 0.6s ease-out;
-    color: #333;
+    color: #636363;
     > span {
       position: absolute;
       left: -28px;
@@ -183,7 +184,7 @@ export default {
     top: 0px;
     width: 1px;
     height: 50px;
-    background-color: #333;
+    background-color: #636363;
     animation: pathmove 1.4s ease-in-out infinite;
     opacity: 0;
   }
@@ -219,20 +220,20 @@ export default {
       transform: translateY(0);
     }
   }
-
+  .heading-wrapper {
+    margin: 0 auto;
+    width: 200px;
+    height: 600px;
+    position: relative;
+  }
   .heading {
-    margin-bottom: 60px;
-    font-size: 2.7rem;
+    position: absolute;
+    top: calc(50% - 15px);
+    font-size: 3rem;
     font-weight: 300;
     letter-spacing: 1px;
-    &::before, &::after {
-      content: '';
-      display: inline-block;
-      width: 30px;
-      height: 3px;
-      margin: 0 10px;
-      border-bottom: solid 2px;
-    }
+    width: 100%;
+    text-align: center;
   }
 
   .to-top-button {
@@ -243,35 +244,49 @@ export default {
   }
 
   .hero {
-    color: #636363;
-    padding: 280px 60px 350px;
+    padding: 280px 60px 400px;
   }
 
-  .portfolio {
-    padding: 100px 60px;
-    color: #fff;
-    background-color: #777;
-  }
-
-  .skills {
-    padding: 100px 40px;
-    background-color: #f5f5f5;
-  }
-
-  .stances {
-    padding: 100px 60px;
-    background-color: #777;
-    color: #fff;
-    .stances-title {
-      font-size: 2.2rem;
-      margin-bottom: 60px;
-      letter-spacing: 1px;
+  .my-contents {
+    position: relative;
+    z-index: 2;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -2;
+      background-color: #fcfcfc;
+      transform: skewY(6deg);
+    }
+    .portfolio {
+      padding: 0 90px 240px;
+    }
+    .skills {
+      padding: 0 100px 240px;
+      position: relative;
+      z-index: 2;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        background-color: #f1f1f1;
+        transform: skewY(-6deg);
+      }
+    }
+    .stances {
+      padding: 0 100px 120px;
     }
   }
 
   .profile {
-    padding: 100px 60px 100px;
-    color: #333;
+    padding: 0 60px 100px;
     p {
       text-align: left;
     }

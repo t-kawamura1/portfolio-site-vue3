@@ -43,7 +43,7 @@ export default {
       speed: 2000,
       interval: 2000,
       'display-amount': 5,
-      height: 360,
+      height: 380,
     })
     let isClicked = ref(false)
     const skillImgSrcs = reactive([
@@ -122,26 +122,26 @@ export default {
 
 <style lang="scss" scoped>
 .skills-container {
+      box-shadow: 0px 4px 4px #dcdcdc;
   .skill-item-enter-active, .skill-item-leave-active {
-    transition: background-color 0.5s;
+    transition: all 0.5s;
   }
   .skill-item {
-    transition: background-color 0.5s;
+    transition: all 0.5s;
     width: 240px;
     height: 360px;
-    border: solid 2px #777;
     border-radius: 5px;
-    margin: 0 18px 18px 0;
+    margin: 0 30px 18px 0;
     padding: 12px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    background-color: #777;
+    background-color: #dcdcdc;
     cursor: pointer;
     &.color-reverse {
       background-color: white;
-      border: solid 2px #c3c3c3;
+      box-shadow: 4px 4px 4px #dcdcdc;
     }
     .img-box {
       margin-bottom: 6px;
