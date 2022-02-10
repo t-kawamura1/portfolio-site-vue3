@@ -26,7 +26,7 @@ export default {
   position: relative;
   width: 50px;
   height: 50px;
-  border: solid 2px #535353;
+  border: solid 1px #535353;
   border-radius: 4px;
   &:hover {
     opacity: 0.5;
@@ -36,11 +36,11 @@ export default {
     display: block;
     position: absolute;
     top: 8px;
-    left: 15px;
+    left: 16px;
     width: 15px;
     height: 15px;
-    border-top: solid 3px #535353;
-    border-left: solid 3px #535353;
+    border-top: solid 2px #535353;
+    border-left: solid 2px #535353;
     transform: rotate(45deg);
   }
   &::after {
@@ -48,19 +48,18 @@ export default {
     display: block;
     position: absolute;
     top: 17px;
-    left: 15px;
+    left: 16px;
     width: 15px;
     height: 15px;
-    border-top: solid 3px #535353;
-    border-left: solid 3px #535353;
+    border-top: solid 2px #535353;
+    border-left: solid 2px #535353;
     transform: rotate(45deg);
   }
   .top {
     position: absolute;
     bottom: 3px;
-    left: 9px;
+    left: 10px;
     font-size: 1.4rem;
-    font-weight: 700;
     color: #535353;
   }
 }

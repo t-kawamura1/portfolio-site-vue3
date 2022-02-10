@@ -1,14 +1,16 @@
 <template>
-  <div class="home" ref="home">
+  <div class="home background-filter07" ref="home">
     <site-header @scroll="scrollToAnchorPoint($event)" />
     <div class="scrolldown">
       <span>Scroll</span>
     </div>
     <transition name="button-fade">
-      <to-top-button
-        v-if="show"
-        @scroll="scrollToAnchorPoint('HOME')"
-        class="to-top-button" />
+      <div class="top-button-links-wrapper" v-if="show">
+        <external-links class="external-links" />
+        <to-top-button
+          @scroll="scrollToAnchorPoint('HOME')"
+          class="to-top-button" />
+      </div>
     </transition>
     <section class="hero">
       <hero-item @scroll="scrollToAnchorPoint($event)"/>
@@ -21,7 +23,7 @@
         <portfolio-items />
       </div>
       <div class="skills" ref="skills">
-        <div class="heading-wrapper">
+        <div class="heading-wrapper small">
           <h2 class="heading sec-fadein">SKILLS</h2>
         </div>
         <skills-set />
@@ -33,8 +35,8 @@
         <stances-items />
       </div>
     </section>
-    <section class="profile sec-fadein" ref="profile">
-      <div class="heading-wrapper">
+    <section class="profile sec-fadein background-filter03" ref="profile">
+      <div class="heading-wrapper small">
         <h2 class="heading sec-fadein">PROFILE</h2>
       </div>
       <profile-item />
@@ -51,6 +53,7 @@ import PortfolioItems from '@/components/home-view/PortfolioItems'
 import SkillsSet from '@/components/home-view/SkillsSet'
 import StancesItems from '@/components/home-view/StancesItems'
 import ProfileItem from '@/components/home-view/ProfileItem'
+import ExternalLinks from '../components/home-view/ExternalLinks.vue';
 
 export default {
   components: {
@@ -60,7 +63,8 @@ export default {
     PortfolioItems,
     SkillsSet,
     StancesItems,
-    ProfileItem
+    ProfileItem,
+    ExternalLinks
   },
   setup() {
     let show = ref(false);
@@ -71,21 +75,21 @@ export default {
     const profile = ref(null);
 
     const showSection = () => {
-      let element = document.querySelectorAll('.sec-fadein');
-      if (!element) return;
+      let element = document.querySelectorAll('.sec-fadein')
+      if (!element) return
       // let showTiming = 200;
-      let scrollY = window.scrollY;
-      let windowH = window.innerHeight;
+      let scrollY = window.scrollY
+      let windowH = window.innerHeight
       for (let i = 0; i < element.length; i++) {
-        let elementClientRect = element[i].getBoundingClientRect();
-        let elementY = scrollY + elementClientRect.top;
+        let elementClientRect = element[i].getBoundingClientRect()
+        let elementY = scrollY + elementClientRect.top
         if (scrollY + windowH > elementY) {
-          element[i].classList.add('scrollin');
+          element[i].classList.add('scrollin')
         }
       }
     }
     const showToTopButton = () => {
-      show.value = (window.scrollY > 500);
+      show.value = (window.scrollY > 500)
     }
     const addSlideLeft = () => {
       let scrollY = window.scrollY
@@ -103,6 +107,10 @@ export default {
       } else {
         element.classList.remove('opacity')
       }
+    }
+    const chageBackgroundFilter = () => {
+      // let profile = document.querySelector('.profile')
+      // let profileTop = profile.getBoundingClientRect().top
     }
     const scrollToAnchorPoint = (refName) => {
       let el;
@@ -140,6 +148,7 @@ export default {
       showSection,
       showToTopButton,
       addSlideLeft,
+      chageBackgroundFilter,
       scrollToAnchorPoint,
     };
   },
@@ -148,11 +157,15 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  background: rgba(255, 255, 255, 0.7) url('../assets/home-bg.jpg') no-repeat fixed left bottom;
+  background: url('../assets/home-bg.jpg') no-repeat fixed left bottom;
   background-size: cover;
   background-blend-mode: lighten;
-  // z-index: 1;
-
+  &.background-filter07 {
+    background-color:  rgba(255, 255, 255, 0.7);
+  }
+  &.background-filter03 {
+    background-color:  rgba(255, 255, 255, 0.3);
+  }
   .scrolldown {
     position: fixed;
     z-index: 9;
@@ -171,9 +184,6 @@ export default {
     &.slide-left {
       left: 50px;
     }
-    // &.color-reverse {
-    //   color: #fff;
-    // }
     &.opacity {
       opacity: 0;
     }
@@ -225,6 +235,9 @@ export default {
     width: 200px;
     height: 600px;
     position: relative;
+    &.small {
+      height: 400px;
+    }
   }
   .heading {
     position: absolute;
@@ -236,6 +249,12 @@ export default {
     text-align: center;
   }
 
+  .external-links {
+    position: fixed;
+    z-index: 9;
+    top: 35%;
+    right: 15px;
+  }
   .to-top-button {
     position: fixed;
     z-index: 9;
@@ -286,7 +305,7 @@ export default {
   }
 
   .profile {
-    padding: 0 60px 100px;
+    padding: 0 60px 60px;
     p {
       text-align: left;
     }

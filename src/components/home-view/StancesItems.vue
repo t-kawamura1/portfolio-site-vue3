@@ -140,7 +140,7 @@ export default {
     }
   }
   .text-highlight {
-    color: #f39800;
+    color: #ff840a;
   }
 }
 

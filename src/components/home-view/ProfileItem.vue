@@ -13,13 +13,6 @@
         世の中をもっと効率的に、かつおもしろいものにするために、エンジニアの道へ。
       </p>
     </div>
-    <div class="external-link-item">
-      <a href="https://github.com/t-kawamura1" class="github"><fab :icon="{ prefix: 'fab', iconName: 'github'}" /></a>
-      <a href="https://twitter.com/kossari" class="twitter"><fab :icon="{ prefix: 'fab', iconName: 'twitter-square'}" /></a>
-      <a href="https://itiiki.hatenablog.com/" class="hatena"><img src="@/assets/hatena.svg" alt="はてなブログロゴ" class="hatena-logo"></a>
-      <a href="https://www.wantedly.com/id/t_kawa/connections/impression" class="wantedly"><img src="@/assets/wantedly.svg" alt="wantedlyロゴ" class="wantedly-logo"></a>
-      <a href="https://qiita.com/t-kawamura1" class="qiita"><img src="@/assets/qiita.png" alt="Qiitaロゴ" class="qiita-logo"></a>
-    </div>
   </div>
 </template>
 
@@ -42,7 +35,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  color: #333;
   .profile-image-item {
     width: 40%;
     flex-grow: 1;
@@ -60,40 +52,11 @@ export default {
     margin-bottom: 30px;
     .my-name {
       margin-bottom: 30px;
-      font-size: 2.5rem;
+      font-size: 2rem;
     }
     .profile-text {
       line-height: 2;
-    }
-  }
-  .external-link-item {
-    display: flex;
-    align-items: center;
-    .github {
-      font-size: 4.3rem;
-      margin-right: 30px;
-    }
-    .twitter {
-      font-size: 4.5rem;
-      margin-right: 20px;
-    }
-    .hatena {
-      margin-right: 5px;
-      .hatena-logo {
-        width: 60px;
-        height: 60px;
-      }
-    }
-    .wantedly {
-      margin-right: 15px;
-      .wantedly-logo {
-        width: 60px;
-        height: 60px;
-      }
-    }
-    .qiita-logo {
-      width: 40px;
-      height: 40px;
+      font-size: 1.5rem;
     }
   }
 }
@@ -117,14 +80,6 @@ export default {
       }
       .profile-text{
         font-size: 1.4rem;
-      }
-    }
-    .external-link-item {
-      justify-content: space-evenly;
-      width: 100%;
-      & > * {
-        margin: 0;
-        width: 80%;
       }
     }
   }
