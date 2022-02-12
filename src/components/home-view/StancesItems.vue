@@ -88,7 +88,7 @@ export default {
         padding: 30px 60px;
         width: 900px;
         box-shadow: 4px 4px 4px #dcdcdc;
-        transition: all 1s;
+        transition: all 0.8s;
         &:hover {
           box-shadow: 24px 24px 24px #dcdcdc;
         }
@@ -118,7 +118,7 @@ export default {
         padding: 30px 60px;
         width: 900px;
         box-shadow: 4px 4px 4px #dcdcdc;
-        transition: all 1s;
+        transition: all 0.8s;
         &:hover {
           box-shadow: 24px 24px 24px #dcdcdc;
         }
