@@ -146,16 +146,62 @@ export default {
 
 @media (max-width: 768px) {
   .stances-container {
-    flex-direction: column;
-      .stances-item {
-      width: 100%;
-      .stance-title {
-        font-size: 2rem;
-        margin-bottom: 15px;
+    height: 600px;
+    .stances-wrapper {
+      height: 200px;
+      .stances-title {
+        font-size: 1.8rem;
+        margin-bottom: 60px;
       }
-      .stance-text {
-        margin-bottom: 50px;
-        font-size: 1.4rem;
+      .stances-item-wrapper {
+        position: relative;
+        margin-bottom: 30px;
+        .stances-item1 {
+          top: 0;
+          left: 0;
+          transform: translateX(0);
+          opacity: 1;
+          padding: 20px 30px;
+          width: 100%;
+          box-shadow: 4px 4px 4px #dcdcdc;
+          &:hover {
+            box-shadow: 8px 8px 8px #dcdcdc;
+          }
+          &.slide-in {
+            transform: translateX(0);
+          }
+          .stance-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+          }
+          .stance-text {
+            font-size: 1rem;
+          }
+        }
+
+        .stances-item2 {
+          top: 0;
+          right: 0;
+          opacity: 1;
+          transform: translateX(0);
+          padding: 20px 30px;
+          width: 100%;
+          box-shadow: 4px 4px 4px #dcdcdc;
+          &:hover {
+            box-shadow: 8px 8px 8px #dcdcdc;
+          }
+          &.slide-in {
+            transform: translateX(0);
+          }
+          .stance-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+          }
+          .stance-text {
+            line-height: 2;
+            font-size: 1rem;
+          }
+        }
       }
     }
   }

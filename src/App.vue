@@ -66,7 +66,7 @@ a {
   background-color: transparent;
   text-decoration: none;
   color: #636363;
-  }
+}
 nav ul li {
   list-style:none;
 }

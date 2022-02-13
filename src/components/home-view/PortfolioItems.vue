@@ -31,43 +31,7 @@
 </template>
 
 <script>
-import { reactive } from "vue"
-import { useRouter } from 'vue-router'
-
-export default {
-  components:{},
-  setup() {
-    const pfImgSrc = reactive([
-      require('@/assets/lsdb-pc-top.png'),
-      require('@/assets/pfsite-pc-top.png')
-    ])
-    const pfTitle = reactive([
-      "Lemon Sour DB",
-      "T.KAWAMURA ポートフォリオサイト"
-    ])
-    const pfURL = reactive([
-      "https://lemonsourdb.net",
-      "https://www.t-kawamura.com"
-    ])
-    const pfText = reactive([
-      "おうち時間の飲み過ぎ防止に！飲んだレモンサワー（もしくは任意の度数）のアルコール量を計算できるアプリです。日毎の記録をカレンダーから確認することもできます。日々進化し、リリースされるレモンサワー。「あれって何だっけ？」となったときのために、データベース化してみました。今後も少しずつ機能を拡張予定！",
-      "このサイト自身です。Vue.jsで作成しました。「先の荒波をみつめて、なお突き進む覚悟」が背景テーマです。「成長を諦めた先に待つのは、ゆるやかな死」です。成長を続けていきましょう。"
-    ])
-
-    const router = useRouter()
-    const routeToPortfolioDetail = () => {
-      router.push('portfolio-detail')
-    }
-
-    return {
-      pfImgSrc,
-      pfTitle,
-      pfURL,
-      pfText,
-      routeToPortfolioDetail,
-    }
-  }
-}
+export default {}
 </script>
 
 <style lang="scss" scoped>
@@ -168,19 +132,47 @@ export default {
 @media (max-width: 768px) {
   .portfolio-container {
     flex-direction: column;
-    .portfolio-item {
-      width: 100%;
-      .site-image {
-        margin-bottom: 30px;
+    .portfolio-item1 {
+      margin-bottom: 100px;
+      .site-image1 {
+        width: 300px;
       }
-      .portfolio-title {
-        font-size: 1.7rem;
+      .text-box1 {
+        width: 200px;
+        height: 60px;
+        top: calc(100% - 30px);
+        left: calc(50% - 30px);
+        .portfolio-title {
+          font-size: 1.5rem;
+          margin-bottom: 10px;
+        }
+        .portfolio-link {
+          font-size: 1.2rem;
+          &:hover {
+            opacity: 1;
+          }
+        }
       }
-      .portfolio-link {
-        font-size: 1.5rem;
+    }
+    .portfolio-item2 {
+      .site-image2 {
+        width: 300px;
       }
-      .portfolio-link:hover {
-        opacity: 1;
+      .text-box2 {
+        width: 300px;
+        height: 60px;
+        top: calc(100% - 30px);
+        left: 10%;
+        .portfolio-title {
+          font-size: 1.5rem;
+          margin-bottom: 10px;
+        }
+        .portfolio-link {
+          font-size: 1.2rem;
+          &:hover {
+            opacity: 1;
+          }
+        }
       }
     }
   }

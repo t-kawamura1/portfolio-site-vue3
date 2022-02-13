@@ -45,7 +45,6 @@ export default {}
         font-size: 2rem;
       }
       > p {
-        // margin-bottom: 20px;
         line-height: 2.2;
         font-size: 1.5rem;
       }
@@ -55,23 +54,32 @@ export default {}
 
 @media (max-width: 768px) {
   .profile-container {
-    flex-direction: column;
-    .profile-image-item {
-      width: 100%;
-      .my-image {
-        margin-bottom: 30px;
+    padding: 0;
+    margin-bottom: 30px;
+    .profile-wrapper {
+      padding: 0;
+      font-weight: 300;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .profile-image-item {
+        margin: 0 0 30px 0;
+        .my-image {
+          width: 200px;
+          border-radius: 50%;
+        }
       }
-    }
-    .profile-item {
-      width: 100%;
-      text-align: center;
-      margin-bottom: 20px;
-      .my-name {
-        font-size: 1.8rem;
-        margin-bottom: 15px;
-      }
-      .profile-text{
-        font-size: 1.4rem;
+      .profile-item {
+        padding-top: 0px;
+        .my-name {
+          text-align: center;
+          margin-bottom: 30px;
+          font-size: 1.8rem;
+        }
+        > p {
+          line-height: 2;
+          font-size: 1.2rem;
+        }
       }
     }
   }

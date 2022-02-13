@@ -40,7 +40,6 @@ export default {
   letter-spacing: 4px;
 }
 .sub-title {
-  margin-bottom: 60px;
   font-weight: 300;
   font-size: 1.8rem;
   letter-spacing: 1px;
@@ -55,11 +54,10 @@ export default {
 @media (max-width: 768px) {
   .title {
     margin-bottom: 50px;
-    font-size: 4rem;
+    font-size: 3rem;
     letter-spacing: 2px;
   }
   .sub-title {
-    margin-bottom: 80px;
     font-size: 1.5rem;
   }
   // .hero-buttons-box {

@@ -1,5 +1,5 @@
 <template>
-  <div class="home background-filter07" ref="home">
+  <div class="home" ref="home">
     <site-header @scroll="scrollToAnchorPoint($event)" />
     <div class="scrolldown">
       <span>Scroll</span>
@@ -35,7 +35,7 @@
         <stances-items />
       </div>
     </section>
-    <section class="profile sec-fadein background-filter03" ref="profile">
+    <section class="profile sec-fadein" ref="profile">
       <div class="heading-wrapper small">
         <h2 class="heading sec-fadein">PROFILE</h2>
       </div>
@@ -108,10 +108,6 @@ export default {
         element.classList.remove('opacity')
       }
     }
-    const chageBackgroundFilter = () => {
-      // let profile = document.querySelector('.profile')
-      // let profileTop = profile.getBoundingClientRect().top
-    }
     const scrollToAnchorPoint = (refName) => {
       let el;
       switch (refName) {
@@ -148,7 +144,6 @@ export default {
       showSection,
       showToTopButton,
       addSlideLeft,
-      chageBackgroundFilter,
       scrollToAnchorPoint,
     };
   },
@@ -157,15 +152,9 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  background: url('../assets/home-bg.jpg') no-repeat fixed left bottom;
+  background: rgba(255, 255, 255, 0.7) url('../assets/home-bg.jpg') no-repeat fixed left bottom;
   background-size: cover;
   background-blend-mode: lighten;
-  &.background-filter07 {
-    background-color:  rgba(255, 255, 255, 0.7);
-  }
-  &.background-filter03 {
-    background-color:  rgba(255, 255, 255, 0.3);
-  }
   .scrolldown {
     position: fixed;
     z-index: 9;
@@ -238,20 +227,20 @@ export default {
     &.small {
       height: 400px;
     }
-  }
-  .heading {
-    position: absolute;
-    top: calc(50% - 15px);
-    font-size: 3rem;
-    font-weight: 300;
-    letter-spacing: 1px;
-    width: 100%;
-    text-align: center;
+    .heading {
+      position: absolute;
+      top: calc(50% - 15px);
+      font-size: 3rem;
+      font-weight: 300;
+      letter-spacing: 1px;
+      width: 100%;
+      text-align: center;
+    }
   }
 
   .external-links {
     position: fixed;
-    z-index: 9;
+    z-index: 11;
     top: 35%;
     right: 15px;
   }
@@ -263,7 +252,7 @@ export default {
   }
 
   .hero {
-    padding: 280px 60px 400px;
+    padding: 280px 60px 460px;
   }
 
   .my-contents {
@@ -318,42 +307,46 @@ export default {
     *:hover {
       opacity: 1;
     }
-
-    .heading {
-      margin-bottom: 40px;
-      font-size: 2.6rem;
-      font-weight: 300;
-      &::before, &::after {
-        width: 30px;
-        height: 2px;
-        margin: 0 10px;
-        border-bottom: solid 2px;
+    .scrolldown {
+      display: none;
+    }
+    .sec-fadein {
+      opacity: 1;
+      transform: translateY(0);
+      transition: none;
+    }
+    .heading-wrapper {
+      height: 200px;
+      &.small {
+        height: 200px
+      }
+      .heading {
+        font-size: 2rem;
       }
     }
-
+    .external-links {
+      top: 93%;
+      right: 22%;
+    }
     .hero {
-      background: none;
-      padding: 200px 30px 60px;
+      padding: 160px 30px 160px;
     }
 
-    .portfolio {
-      padding: 50px 30px 40px;
-    }
+    .my-contents {
+      .portfolio {
+        padding: 50px 30px 180px;
+      }
 
-    .skills {
-      padding: 50px 30px;
-      background: none;
-    }
+      .skills {
+        padding: 50px 30px 120px;
+      }
 
-    .stances {
-      padding: 50px 30px;
-      .stances-title {
-        display: none;
+      .stances {
+        padding: 50px 30px;
       }
     }
-
     .profile {
-      padding: 50px 30px;
+      padding: 50px 30px 120px;
     }
   }
 }

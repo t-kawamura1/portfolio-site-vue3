@@ -39,11 +39,14 @@ import { reactive, ref } from "vue"
 
 export default {
   setup() {
+    const isMobile = ref(window.matchMedia('(max-width: 768px)').matches)
+
     const options = reactive({
       speed: 2000,
       interval: 2000,
-      'display-amount': 5,
-      height: 380,
+      'display-amount': isMobile.value ? 1 : 5,
+      // 'item-width': 240,
+      height: 390,
     })
     let isClicked = ref(false)
     const skillImgSrcs = reactive([
@@ -107,6 +110,7 @@ export default {
     }
 
     return {
+      isMobile,
       options,
       isClicked,
       skillImgSrcs,
@@ -122,7 +126,7 @@ export default {
 
 <style lang="scss" scoped>
 .skills-container {
-      box-shadow: 0px 4px 4px #dcdcdc;
+  box-shadow: 0px 4px 4px #dcdcdc;
   .skill-item-enter-active, .skill-item-leave-active {
     transition: all 0.5s;
   }
@@ -212,13 +216,5 @@ export default {
   }
 }
 
-@media (max-width: 768px) {
-  .skills-container {
-    flex-direction: column;
-    .skill-image {
-      // width: 40%;
-      // height: 40%;
-    }
-  }
-}
+@media (max-width: 768px) {}
 </style>

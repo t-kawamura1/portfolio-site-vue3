@@ -95,32 +95,68 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .profile-container {
-    flex-direction: column;
-    .profile-image-item {
-      width: 100%;
-      .my-image {
-        margin-bottom: 30px;
+  .links-container {
+    .links-wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      > * {
+        margin: 0 9px 0 0;
       }
-    }
-    .profile-item {
-      width: 100%;
-      text-align: center;
-      margin-bottom: 20px;
-      .my-name {
-        font-size: 1.8rem;
-        margin-bottom: 15px;
+      .github {
+        padding: 4px 3px;
+        .github-logo {
+          font-size: 3rem;
+          transition: all 0.2s;
+          &:hover {
+            font-size: 3.9rem;
+          }
+        }
       }
-      .profile-text{
-        font-size: 1.4rem;
+      .twitter {
+        padding: 6px 3px;
+        .twitter-logo {
+          font-size: 3.2rem;
+          transition: all 0.2s;
+          &:hover {
+            font-size: 4rem;
+          }
+        }
       }
-    }
-    .external-link-item {
-      justify-content: space-evenly;
-      width: 100%;
-      & > * {
-        margin: 0;
-        width: 80%;
+      .hatena {
+        padding: 3px 3px 0 0;
+        .hatena-logo {
+          width: 28px;
+          height: 28px;
+          transition: all 0.2s;
+          &:hover {
+            width: 35px;
+            height: 35px;
+          }
+        }
+      }
+      .wantedly {
+        .wantedly-logo {
+          width: 33px;
+          height: 33px;
+          transition: all 0.2s;
+          &:hover {
+            width: 40px;
+            height: 40px;
+          }
+        }
+      }
+      .qiita {
+        padding-right: 3px;
+        .qiita-logo {
+          width: 27px;
+          height: 27px;
+          transition: all 0.2s;
+          &:hover {
+            width: 35px;
+            height: 35px;
+          }
+        }
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <header class="header" :class="{ opacity: isOpacity }">
-    <site-logo/>
+    <site-logo class="site-logo"/>
     <nav class="home-nav" v-if="isHome">
       <ul class="nav-list">
         <li class="nav-list-item"
@@ -139,9 +139,12 @@ export default {
 
 @media (max-width: 768px) {
   .header {
-    justify-content: space-between;
     padding: 0 10px 0 10px;
+    justify-content: flex-start;
     height: 40px;
+    .site-logo {
+      margin-right: 30px;
+    }
     .home-nav {
       width: 270px;
       height: 40px;
