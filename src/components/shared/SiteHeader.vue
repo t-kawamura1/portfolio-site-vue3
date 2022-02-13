@@ -6,9 +6,17 @@
         <span></span>
         <span></span>
         <span></span>
-        <ul class="dropdown-list">
+        <ul class="dropdown-list" v-if="isHome">
           <li class="dropdown-list-item"
               v-for="(name, index) in homeHeaderNameList"
+              :key="index"
+              @click="onScroll(name)">
+            {{ name }}
+          </li>
+        </ul>
+        <ul class="dropdown-list" v-if="isPfDetail">
+          <li class="dropdown-list-item"
+              v-for="(name, index) in pfDetailHeaderNameList"
               :key="index"
               @click="onScroll(name)">
             {{ name }}
