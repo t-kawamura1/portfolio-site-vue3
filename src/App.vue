@@ -14,13 +14,13 @@ export default {
 
     const createTitleAndDescription = (routeInstance) => {
       if (routeInstance.meta.title) {
-        const setTitle = routeInstance.meta.title + " | T.KAWAMURA ポートフォリオサイト";
+        const setTitle = routeInstance.meta.title + " | T.KAWAMURA PORTFOLIO-SITE";
         document.title = setTitle;
       } else {
-        document.title = "T.KAWAMURA ポートフォリオサイト";
+        document.title = "T.KAWAMURA PORTFOLIO-SITE";
       }
       if (routeInstance.meta.desc) {
-        const setDesc = routeInstance.meta.desc + " | T.KAWAMURA ポートフォリオサイト";
+        const setDesc = routeInstance.meta.desc + " | T.KAWAMURA PORTFOLIO-SITE";
         document
           .querySelector("meta[name='description']")
           .setAttribute("content", setDesc);

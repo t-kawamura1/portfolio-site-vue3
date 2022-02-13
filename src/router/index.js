@@ -8,7 +8,7 @@ const routes = [
     name: 'SiteHome',
     component: SiteHome,
     meta: {
-      desc: "Webエンジニアを目指す河村智之のポートフォリオサイトです。",
+      desc: "Webエンジニア・河村智之のポートフォリオサイトです。",
     },
   },
   {
@@ -17,7 +17,7 @@ const routes = [
     component: PortfolioDetail,
     meta: {
       title: "ポートフォリオ詳細",
-      desc: "Webエンジニアを目指す河村智之のポートフォリオサイトです。ここでは私のポートフォリオを紹介します。",
+      desc: "Webエンジニア・河村智之のポートフォリオサイトです。ここでは私のポートフォリオを紹介します。",
     },
   }
 ]
