@@ -1,6 +1,6 @@
 <template>
   <div class="skills-container">
-    <split-carousel v-bind="options">
+    <split-carousel v-bind="pcOptions" v-if="isPcWidth">
       <split-carousel-item v-for="(img, i) in skillImgSrcs" :key="i">
         <transition name="skill-item">
           <div
@@ -31,22 +31,57 @@
         </transition>
       </split-carousel-item>
     </split-carousel>
+    <Splide :options="spOptions" v-else>
+      <SplideSlide v-for="(img, i) in skillImgSrcs" :key="i">
+        <transition name="skill-item">
+          <div
+            class="skill-item"
+            @click="onSkillItem(i)"
+          >
+            <div class="img-box">
+              <img
+                :src="img"
+                alt="スキルイメージ"
+                class="skill-image"
+              >
+              <div class="skill-name">{{ skillNames[i] }}</div>
+            </div>
+
+            <div class="skill-text">
+              <div class="use">
+                <span class="use-tag">使用期間</span>
+                <div>{{ periodsOfUse[i] }}</div>
+              </div>
+              <div class="business">
+                <span class="business-tag">業務歴</span>
+                <div>{{ businessHistories[i] }}</div>
+              </div>
+              <p class="description">{{ descriptions[i] }}</p>
+            </div>
+          </div>
+        </transition>
+      </SplideSlide>
+    </Splide>
   </div>
 </template>
 
 <script>
 import { reactive, ref } from "vue"
+import '@splidejs/splide/dist/css/splide.min.css'
 
 export default {
   setup() {
-    const isMobile = ref(window.matchMedia('(max-width: 768px)').matches)
+    const isPcWidth = ref(window.matchMedia('(min-width: 769px)').matches)
 
-    const options = reactive({
+    const pcOptions = reactive({
       speed: 2000,
       interval: 2000,
-      'display-amount': isMobile.value ? 1 : 5,
-      // 'item-width': 240,
+      'display-amount': 5,
       height: 390,
+    })
+    const spOptions = reactive({
+      rewind: true,
+      autoplay: true
     })
     let isClicked = ref(false)
     const skillImgSrcs = reactive([
@@ -110,8 +145,9 @@ export default {
     }
 
     return {
-      isMobile,
-      options,
+      isPcWidth,
+      pcOptions,
+      spOptions,
       isClicked,
       skillImgSrcs,
       skillNames,
@@ -212,6 +248,12 @@ export default {
     }
     .text-leave-to {
       opacity: 0;
+    }
+  }
+
+  .splide {
+    .skill-item {
+      margin: 12px auto 24px;
     }
   }
 }

@@ -50,7 +50,7 @@
           <p>規模の小さいサイトですが、学習目的でDockerを導入しています。</p>
           <p>この開発を通じてコンポーネント・CSS設計の重要性を学びました。</p>
           <p>開発過程についても、git-flowを意識したワークフローを取り入れています。</p>
-          <p class="p-last">（2022年1月）Vue3にバージョンアップしました。</p>
+          <p class="p-last">（2022年2月）Vue3にバージョンアップしました。</p>
           <tk-table />
         </div>
       </div>
@@ -250,6 +250,9 @@ export default {
                 cursor: row-resize;
               }
             }
+          }
+          .note {
+            color: #434343;
           }
         }
       }
